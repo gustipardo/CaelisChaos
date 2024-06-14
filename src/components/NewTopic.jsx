@@ -3,7 +3,6 @@ import "@/styles/NewTopic.css";
 
 import { Button } from "antd";
 import { Input } from "antd";
-import LoginPopup from "./LoginPopUp";
 
 const { TextArea } = Input;
 
@@ -11,7 +10,6 @@ const NewTopicForm = ({ user_id }) => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [isSuccess, setIsSuccess] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
   const postNewTopic = async () => {
     try {
       const response = await fetch(
@@ -50,7 +48,6 @@ const NewTopicForm = ({ user_id }) => {
   };
   React.useEffect(() => {
     if (user_id == null) {
-      setIsOpen(true);
     }
   }, []);
 
@@ -62,7 +59,6 @@ const NewTopicForm = ({ user_id }) => {
 
   return (
     <form className="form" onSubmit={handleSubmit}>
-      {isOpen && <LoginPopup setIsOpen={setIsOpen} />}
       <label className="label">Topic title</label>
       <TextArea
         className="input input-title"
