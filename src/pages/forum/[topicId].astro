@@ -5,7 +5,6 @@ import Layout from "@/layout/Layout.astro"
 import getTopicById from '@/services/getTopicById';
 import getResponsesById from '@/services/getResponsesById';
 import Title from '@/components/Title.astro';
-import NewResponseForm from '@/components/NewResponseForm.jsx'
 import { getSession } from 'auth-astro/server';
 
 const {topicId} = Astro.params
@@ -50,8 +49,6 @@ const userId = session?.user?.id
         ))
         }
         <div class="response-container">
-
-            <NewResponseForm user_id={userId} topicId={topicId} client:load />
         </div>
 
     </div>
