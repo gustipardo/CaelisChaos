@@ -2,12 +2,10 @@ import React, { useState, useRef } from "react";
 import "@/styles/NewResponseForm.css";
 import { Button } from "antd";
 import { useResponseStore } from "@/store/Respose";
-import LoginPopup from "@/components/LoginPopUp";
 
 const NewResponseForm = ({ user_id, topicId }) => {
   const [value, setValue] = useState("");
   const [isSuccess, setIsSuccess] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
   const textareaRef = useRef(null);
   const response_id = useResponseStore((state) => state.response_id);
   const content = useResponseStore((state) => state.content);
@@ -111,12 +109,10 @@ const NewResponseForm = ({ user_id, topicId }) => {
 
   const handleClick = () => {
     if (user_id == null) {
-      setIsOpen(true);
     }
   };
   return (
     <form className="form" onSubmit={handleSubmit}>
-      {isOpen && <LoginPopup setIsOpen={setIsOpen} />}
       {response_id && (
         <div className="responseQuoted-container">
           <p id="responseQuoted" className="responseQuoted">
